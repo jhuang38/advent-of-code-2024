@@ -15,7 +15,7 @@ fn main() -> Result<(), Box<dyn Error + 'static>> {
     // day4::count_xmas_count()?;
     // day4::count_masx_all()?;
 
-    day5::sum_middle_correctly_ordered()?;
-    day5::sum_middle_incorrect_fixed()?;
+    // day5::sum_middle_correctly_ordered()?;
+    // day5::sum_middle_incorrect_fixed()?;
     Ok(())
 }

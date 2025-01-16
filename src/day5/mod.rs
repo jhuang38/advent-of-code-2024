@@ -1,4 +1,11 @@
-use std::{cmp::min, collections::{HashMap, HashSet}, error::Error, fs::File, io::{BufRead, BufReader}, mem::swap};
+use std::{
+    cmp::min,
+    collections::{HashMap, HashSet},
+    error::Error,
+    fs::File,
+    io::{BufRead, BufReader},
+    mem::swap,
+};
 
 pub fn sum_middle_correctly_ordered() -> Result<(), Box<dyn Error>> {
     let input = File::open("data/day5/input.txt")?;
@@ -26,7 +33,7 @@ pub fn sum_middle_correctly_ordered() -> Result<(), Box<dyn Error>> {
         .filter(|ordering| {
             for i in 0..ordering.len() {
                 // check that corresponding rule exists for each
-                for j in i+1..ordering.len() {
+                for j in i + 1..ordering.len() {
                     if !rules[&ordering[i]].contains(&ordering[j]) {
                         return false;
                     }
@@ -34,11 +41,8 @@ pub fn sum_middle_correctly_ordered() -> Result<(), Box<dyn Error>> {
             }
             true
         })
-        .map(|ordering| {
-            ordering[ordering.len()/2]
-        })
+        .map(|ordering| ordering[ordering.len() / 2])
         .sum();
-
 
     println!("Sum of middle values: {:?}", sum_middle_page);
     Ok(())
@@ -72,12 +76,12 @@ pub fn sum_middle_incorrect_fixed() -> Result<(), Box<dyn Error>> {
             let mut changed = false;
             for i in (0..ordering.len()).rev() {
                 // check that corresponding rule exists for each
-                let mut j = ordering.len()-1;
-                while j >= i+1 {
+                let mut j = ordering.len() - 1;
+                while j >= i + 1 {
                     if !rules[&ordering[i]].contains(&ordering[j]) {
                         changed = true;
                         // move to earlier position, as clearly we pass on all of those
-                        ordering.insert(min(ordering.len(), j+1), ordering[i]);
+                        ordering.insert(min(ordering.len(), j + 1), ordering[i]);
                         ordering.remove(i);
                         break;
                     }
@@ -90,11 +94,8 @@ pub fn sum_middle_incorrect_fixed() -> Result<(), Box<dyn Error>> {
                 None
             }
         })
-        .map(|ordering: Vec<u32>| {
-            ordering[ordering.len()/2]
-        })
+        .map(|ordering: Vec<u32>| ordering[ordering.len() / 2])
         .sum();
-
 
     println!("Sum of middle fixed values: {:?}", sum_middle_page);
     Ok(())
