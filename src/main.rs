@@ -1,6 +1,6 @@
 use std::error::Error;
 
-use advent_of_code_2024::{day1, day2, day3, day4, day5};
+use advent_of_code_2024::{day1, day2, day3, day4, day5, day6, day7};
 
 fn main() -> Result<(), Box<dyn Error + 'static>> {
     // day1::total_list_distance()?;
@@ -17,5 +17,9 @@ fn main() -> Result<(), Box<dyn Error + 'static>> {
 
     // day5::sum_middle_correctly_ordered()?;
     // day5::sum_middle_incorrect_fixed()?;
+
+    // day6::count_distinct_block_positions()?;
+
+    day7::total_calibration_2()?;
     Ok(())
 }
